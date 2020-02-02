@@ -1,0 +1,24 @@
+#### Package Requirements
+	1. MySQL
+	2. flask
+	3. flask-cors
+	4. pymysql
+
+We performed most of our experiments with the basic interface 
+	--> (folder - Interface1Basic)
+
+#### Running the interface requires mysql 
+#### ==== without any password set ======
+#### If you decide to set the password, update it in the newserver.py file 
+
+#### We haven't been able to host this as a service yet
+#### If absolutely required we can host it on heroku, 
+#### but it was just too much pain to get things working, :P
+
+	1. Make a sql database with name annotationdbname
+	   and update it with the data in annnotationdbname.sql
+
+	2. Once such a database exists, run the file newserver.py 
+	   in the terminal/commandprompt
+
+	3. Open the index.html file in a browser and start annotating

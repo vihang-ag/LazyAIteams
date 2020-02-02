@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title> Human-AI shared mental model</title>
+        <style>
+            ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+.active {
+  background-color:royalblue;
+}
+.largebox { display: block; margin: 15px; width:40%; height:200px; border: 2px solid rgb(8, 8, 8); background-color:lightsteelblue;  }
+button {
+  background-color:paleturquoise;
+  border: none;
+  color:#111;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 15px 15px;
+  cursor: pointer;
+}
+</style>
+    </head>
+    <body>
+        <header id="header"><h2>Text Annotation Interface</h2></header>
+         <ul>
+             <li><a class="active" href="#Instructions">Instructions</a></li>
+            <li><a href="index.html">Task</a></li>
+        </ul>
+        <div class="largebox">
+        <p><h3>Instructions</h3></p>
+        <ol>
+            <li> You need to annotate a displayed text based on the four intents provided in options </li>
+            <li> Select the most appropriate option that is relevant to the text being displayed</li>
+            <li> Accuracy for each text annotation task would be displayed for your reference</li>
+        </ol>
+        </div>
+        <button onclick="window.location.href = 'index.html';">Go to Task</button>
+    </body>
+</html>

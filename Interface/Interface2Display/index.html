@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+
+/* Code to get the paragraph from Flask API */
+var id=1;
+var url="http://localhost:5000/getTextJson/"
+$.ajax({
+    type:"GET",
+    dataType: "json",
+    url: url+id,
+    success: function(response){
+		$("#idvalue").val(response.id);
+        $("#textarea").val(response.data);
+        $("#accuracy").val(response.prediction);
+        $("#effort").val(response.model_effort);
+    }
+})
+});
+
+/* Code below for submitting response*/
+
+function onSubmitNext() {
+    var id=document.getElementById("idvalue").value;
+	var choice = '';
+  choice = choice + document.querySelector('input[name="colors"]:checked').value;
+	var timer = $(".timer").text()
+	var h1 = document.getElementsByTagName('h1')[0];
+	
+	$("#textbox").val(choice);
+	var url="http://localhost:5000/postJson"
+	var arr = { Choice: choice, Id: id, Time: timer };
+$.ajax({
+    url: url,
+    type: 'POST',
+    data: JSON.stringify(arr),
+    contentType: 'application/json; charset=utf-8',
+    dataType: 'json',
+    success: function(msg) {
+		if(msg.id=="0") {
+			alert("End of Dataset");
+		}
+		//Clear radio button selection
+		$('input[name="colors"]').prop('checked', false);
+		
+		//Reset clock and stop
+		h1.textContent = "00:00:00";
+		
+		clearTimeout(t);
+		seconds = 0; minutes = 0; hours = 0;
+        		
+		$("#idvalue").val(msg.id);
+        $("#textarea").val(msg.data);
+        $("#accuracy").val(msg.prediction);
+        $("#effort").val(msg.model_effort);
+    }
+});
+}
+
+</script>
+<style>
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+li a:hover {
+  background-color: #111;
+}
+
+.active {
+  background-color:royalblue;
+}
+
+div.largebox { display: block; margin: 15px; width:90%; height:500px; border: 2px solid rgb(8, 8, 8); background-color:lightsteelblue; box-sizing:content-box; float: left; padding: 12px 28px;}
+.textarea1 {display: block; width:50px; height:20px; border:1px }
+.textarea2 {display: inline-block; width:600px; height:150px; border:1px;}
+.textarea3 {display: inline-block; width:200px; height:150px; border:1px; margin-left: 20px;}
+.textarea4 {display: inline-block; width:200px; height:150px; border:1px; margin-left: 20px;}
+button 
+{
+  background-color:paleturquoise;
+  border: none;
+  color:#111;
+  padding: 12px 24px;
+  text-decoration: none;
+  margin: 4px 4px;
+  cursor: pointer;
+  }
+</style>
+</head>
+<body>
+<header id="header"><h2>Text Annotation Interface</h2></header>
+<ul>
+    <li><a href="Instructions.html">Instructions</a></li>
+    <li><a class="active" href="index.html">Task</a></li>
+</ul>
+<div class="largebox">
+<h1 class="timer"><time>00:00:00</time></h1>
+<button id="start">Start</button>
+<button id="stop" style="display: none;">pause</button>
+<button id="clear" style="display: none;">clear</button>
+
+<h3><p class="text1">Dataset Display &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;Accuracy &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp; Effort</p></h3>
+
+<textarea id="idvalue" class="textarea1" style="display: none;"></textarea>
+<textarea id="textarea" class="textarea2" style="font-size: 18px;"></textarea>
+<textarea id="accuracy" class="textarea3" style="text-align: center;font-size: 40px; font-family: arial;"></textarea>
+<textarea id="effort" class="textarea4" style="text-align: center;font-size: 40px; font-family: arial;"></textarea>
+<p>Please select your choice:</p>
+  <input type="radio" id="choice" name="colors" value="Answer" style="width:20px;height:2em;"> Answer
+  <input type="radio" id="choice" name="colors" value="Opinion" style="width:20px;height:2em;"> Opinion
+  <input type="radio" id="choice" name="colors" value="Paraphrase" style="width:20px;height:2em;"> Paraphrase
+  <input type="radio" id="choice" name="colors" value="Statement" style="width:20px;height:2em;"> Statement<br >
+  <p><button onclick="onSubmitNext()">Submit and Next</button>
+	<button onclick="onSubmitNext()">Skip</button> <input type="radio" id="choice" name="colors" value="Model Prediction" style="width:20px;height:2em;"> Select this option to skip the annotation and click Skip
+</p>
+  
+  
+  <script>
+  /* This code below is for timer functionality */
+  /* Please do not cut, paste this block of code in the earlier <script> element at the top */
+  var h1 = document.getElementsByTagName('h1')[0],
+    start = document.getElementById('start'),
+    stop = document.getElementById('stop'),
+    clear = document.getElementById('clear'),
+    seconds = 0, minutes = 0, hours = 0,
+    t;
+
+function add() {
+    seconds++;
+    if (seconds >= 60) {
+        seconds = 0;
+        minutes++;
+        if (minutes >= 60) {
+            minutes = 0;
+            hours++;
+        }
+    }
+    
+    h1.textContent = (hours ? (hours > 9 ? hours : "0" + hours) : "00") + ":" + (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") + ":" + (seconds > 9 ? seconds : "0" + seconds);
+
+    timer();
+}
+function timer() {
+    t = setTimeout(add, 1000);
+}
+//timer();
+
+
+/* Start button */
+start.onclick = timer;
+
+/* Stop button */
+stop.onclick = function() {
+    clearTimeout(t);
+}
+
+/* Clear button */
+clear.onclick = function() {
+    h1.textContent = "00:00:00";
+    seconds = 0; minutes = 0; hours = 0;
+}
+  </script>
+</div>
+</body>
+</html>

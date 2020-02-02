@@ -1,0 +1,45 @@
+######## Required Packages #####################
+	1. torch
+	2. numpy
+	3. matplotlib
+
+####### The Interface
+Look at the readme file in the interface folder for running the interface and collect human annotations
+
+### Datasets
+The file train_vector_dict_480.json contains the vectorized sentences from the train set for active learning experiment.
+Here the data samples were shown to maximize model entropy.
+
+The file newtrain_vector_dict_480.json contains the vectorized sentences from the train set for low effort learning experiment.
+Here the data samples were shown to minimize human invested effort. This dataset has the effort class values and assigned effort value for each sample as well.
+
+The simulated Random Sampling experiment can use both datasets. Currently uses the later to evaluate average and total effort.
+
+#### Instructions for running the machine learning experimental  code
+
+All active learning experiments are simulted, where annotation data was collected before the experiment.
+
+The folder contains three python files for running the baseline and proposed experiment.
+The datasets are dictionaries of vector featurized sentences. All sentences in the datasets 
+were featurized before training to save time.
+(If error in reading data, provide full data paths)
+
+1. Active learning with maximum entropy sampling 
+	run python simple_mlp.py
+
+Displays Train/Test accuracy at each iterations
+Each iteration is an update with a batch size of 12
+
+2. Random sampling baseline experiment
+	run python simple_mlp_random.py
+
+Display Average effort and examples seen as well after each iteration
+
+3. Sampling for low human effort
+	run python simple_mlp_lowrandomeffort.py  
+
+
+####### The ML model
+All scripts use a simple multilayer perceptron model for classification
+
+The plots folder contains some of the plots used for the final results. Final results were an average over 5 experiments for each strategy.
