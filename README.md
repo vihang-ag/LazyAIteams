@@ -11,9 +11,9 @@ nature and our mental effort is parsimonious. This motivates us to identify Huma
 
 We also designed a very simple interface and its variant to seamlessly carry out our experiments.
 
-![test image size](https://github.com/vihang-ag/LazyAIteams/blob/master/images/interface1.png){:height="500px" width="400px"}
+<img src="https://github.com/vihang-ag/LazyAIteams/blob/master/images/interface1.png" width="500" height="400">
 
-![test image size](https://github.com/vihang-ag/LazyAIteams/blob/master/images/interface2.png){:height="500px" width="400px"}
+<img src="https://github.com/vihang-ag/LazyAIteams/blob/master/images/interface2.png" width="500" height="400">
 
 
 ## Metrics
@@ -26,7 +26,7 @@ We used three metrics to be evaluated in our study. The table below defines thes
 ## Results
 Resulting Accuracy and Effort estimates for the baselines (active learning with maximum entropy sampling and random sampling) and the proposed experiment. 
 
-![](https://github.com/vihang-ag/LazyAIteams/blob/master/images/results.png =300x300)
+<img src="https://github.com/vihang-ag/LazyAIteams/blob/master/images/results.png" width="500" height="300">
 
 Average over 5 experiments to ensure validity
 
