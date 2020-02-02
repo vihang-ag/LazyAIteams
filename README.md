@@ -26,7 +26,16 @@ We used three metrics to be evaluated in our study. The table below defines thes
 ## Results
 Resulting Accuracy and Effort estimates for the baselines (active learning with maximum entropy sampling and random sampling) and the proposed experiment. 
 
-<img src="https://github.com/vihang-ag/LazyAIteams/blob/master/images/results.png" width="768" height="190">
+<!-- <img src="https://github.com/vihang-ag/LazyAIteams/blob/master/images/results.png" width="768" height="190"> -->
+
+|  Learning | Accuracy (%) | Human Effort (s) | OTP | Average Human Effor (s)|  
+|:----------:|:------:| :----:|:------:| :----:|
+| Active Learning (Maximum Entropy Sampling) | 51.85 | 4635.36 | 0.7345 | 13.32 |
+|:----------:|:------:| :----:|:------:| :----:|
+| Random Sampling | 51.85 | 6503.33 | 0.6715 | 13.56 |
+|:----------:|:------:| :----:|:------:| :----:|
+| Ours | 52.10 | 1239.6 | 1.3264 | 10.33 |
+
 
 Average over 5 experiments to ensure validity
 
