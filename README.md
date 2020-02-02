@@ -11,9 +11,9 @@ nature and our mental effort is parsimonious. This motivates us to identify Huma
 
 We also designed a very simple interface and its variant to seamlessly carry out our experiments.
 
-![](https://github.com/vihang-ag/LazyAIteams/blob/master/images/interface1.png)
+![](https://github.com/vihang-ag/LazyAIteams/blob/master/images/interface1.png=500x500)
 
-![](https://github.com/vihang-ag/LazyAIteams/blob/master/images/interface2.png)
+![](https://github.com/vihang-ag/LazyAIteams/blob/master/images/interface2.png=500x500)
 
 
 ## Metrics
@@ -26,13 +26,13 @@ We used three metrics to be evaluated in our study. The table below defines thes
 ## Results
 Resulting Accuracy and Effort estimates for the baselines (active learning with maximum entropy sampling and random sampling) and the proposed experiment. 
 
-![](https://github.com/vihang-ag/LazyAIteams/blob/master/images/results.png)
+![](https://github.com/vihang-ag/LazyAIteams/blob/master/images/results.png=300x300)
 
 Average over 5 experiments to ensure validity
 
 
 
-##Setting up the Interface
+## Setting up the Interface
 
 ### Requirements
 MySQL
@@ -69,7 +69,7 @@ numpy
 matplotlib
 
 
-###Instructions to run the experiments
+### Instructions to run the experiments
 
 All active learning experiments are simulted, where annotation data was collected before the experiment.
 
@@ -79,7 +79,7 @@ The datasets are dictionaries of vector featurized sentences. All sentences in t
 were featurized before training to save time.
 
 ```
-Active learning with maximum entropy sampling 
+Active learning with maximum entropy sampling: 
 	run python simple_mlp.py
 ```
 
@@ -87,14 +87,14 @@ Displays Train/Test accuracy at each iteration
 Each iteration is an update with a batch size of 12
 
 ```
-Random sampling baseline experiment
+Random sampling baseline experiment:
 	run python simple_mlp_random.py
 ```
 
 Displays Average effort and examples seen after each iteration
 
 ```
-Sampling for low human effort
+Sampling for low human effort:
 	run python simple_mlp_lowrandomeffort.py  
 ```
 
@@ -104,7 +104,7 @@ The file ```data/train_vector_dict_480.json``` contains vectorized sentences fro
 The file ```data/newtrain_vector_dict_480.json``` contains vectorized sentences from the train set for the proposed experiment.
 
 #### Notes
-All scripts use a simple multilayer perceptron model for classification.
+All scripts use a simple multilayer perceptron model for classification. Read the report at ```https://vihang-ag.github.io/pdfs/Lazy_Human_AI_teams.pdf```
 
 
 
