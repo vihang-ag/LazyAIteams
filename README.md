@@ -11,9 +11,9 @@ nature and our mental effort is parsimonious. This motivates us to identify Huma
 
 We also designed a very simple interface and its variant to seamlessly carry out our experiments.
 
-![](https://github.com/vihang-ag/LazyAIteams/blob/master/images/interface1.png =500x500)
+![test image size](https://github.com/vihang-ag/LazyAIteams/blob/master/images/interface1.png){:height="500px" width="400px"}
 
-![](https://github.com/vihang-ag/LazyAIteams/blob/master/images/interface2.png =500x500)
+![test image size](https://github.com/vihang-ag/LazyAIteams/blob/master/images/interface2.png){:height="500px" width="400px"}
 
 
 ## Metrics
@@ -48,11 +48,9 @@ pymysql
 Running the interface requires mysql without any password set. If you decide to set the password, update it in the ```Interface1Basic/newserver.py``` file.
 
 ```
-1. Make a sql database with name annotationdbname
-   and update it with the data in annnotationdbname.sql
+1. Make a sql database with name annotationdbname and update it with the data in annnotationdbname.sql
 
-2. Once such a database exists, run the file newserver.py 
-   in the terminal
+2. Once such a database exists, run the file newserver.py in the terminal
 
 3. Open the index.html file in a browser and start annotating
 ```
@@ -80,7 +78,7 @@ were featurized before training to save time.
 
 ```
 Active learning with maximum entropy sampling: 
-	run python simple_mlp.py
+  run python simple_mlp.py
 ```
 
 Displays Train/Test accuracy at each iteration
@@ -88,14 +86,14 @@ Each iteration is an update with a batch size of 12
 
 ```
 Random sampling baseline experiment:
-	run python simple_mlp_random.py
+  run python simple_mlp_random.py
 ```
 
 Displays Average effort and examples seen after each iteration
 
 ```
 Sampling for low human effort:
-	run python simple_mlp_lowrandomeffort.py  
+  run python simple_mlp_lowrandomeffort.py  
 ```
 
 #### Dataset
@@ -104,7 +102,8 @@ The file ```data/train_vector_dict_480.json``` contains vectorized sentences fro
 The file ```data/newtrain_vector_dict_480.json``` contains vectorized sentences from the train set for the proposed experiment.
 
 #### Notes
-All scripts use a simple multilayer perceptron model for classification. Read the report at ```https://vihang-ag.github.io/pdfs/Lazy_Human_AI_teams.pdf```
+All scripts use a simple multilayer perceptron model for classification. 
+Read the report at ```https://vihang-ag.github.io/pdfs/Lazy_Human_AI_teams.pdf```
 
 
 
