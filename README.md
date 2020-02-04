@@ -67,7 +67,7 @@ Running the interface requires mysql without any password set. If you decide to 
 ### Requirements
 Python 3.5
 
-PyTtorch >= 1.0
+Pytorch >= 1.0
 
 numpy
 
